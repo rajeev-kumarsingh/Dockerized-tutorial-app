@@ -1,0 +1,38 @@
+Explanation of the Dockerfile:
+Base Image:
+
+We're using ubuntu:20.04 as the base operating system.
+Install Nginx:
+
+The RUN command updates the package list and installs Nginx (a web server) and any dependencies.
+Working Directory:
+
+WORKDIR sets the working directory inside the container to /var/www/html, where Nginx serves files by default.
+Copy Files:
+
+The COPY commands copy the HTML, CSS, and JavaScript files from your local machine into the container.
+Expose Port:
+
+The EXPOSE 80 line tells Docker that the container will listen on port 80, which is the default HTTP port.
+Start Nginx:
+
+The CMD command runs Nginx in the foreground when the container starts.
+Steps to Build and Run the Docker Container:
+Save the Dockerfile in the same directory where your index.html, styles.css, and scripts.js files are located.
+
+Build the Docker Image: In the terminal, navigate to the directory where your Dockerfile is located and run the following command:
+
+bash
+Copy code
+docker build -t tutorial-app .
+Run the Docker Container:
+
+bash
+Copy code
+docker run -p 8080:80 tutorial-app
+This will map port 80 from inside the container to port 8080 on your local machine.
+
+Access the App:
+
+Open a browser and go to http://localhost:8080 to see your tutorial website running inside the Docker container.
+
